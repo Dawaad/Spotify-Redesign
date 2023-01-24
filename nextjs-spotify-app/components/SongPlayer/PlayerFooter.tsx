@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from "react";
-import useSpotify from "../hooks/useSpotify";
+import useSpotify from "../../hooks/useSpotify";
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-import { currentTrackIDState, isPlayingState } from "../atoms/songAtom";
-import useSongInfo from "../hooks/useSongInfo";
+import { currentTrackIDState, isPlayingState } from "../../atoms/songAtom";
+import useSongInfo from "../../hooks/useSongInfo";
 import { debounce } from "lodash";
 import {
   ArrowsRightLeftIcon,
