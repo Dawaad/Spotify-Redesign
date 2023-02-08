@@ -209,7 +209,7 @@ function PlayerFooter() {
           onChange={(e) => {
             setVolume(Number(e.target.value));
           }}
-          className="accent-green-600 w-14 md:w-28  "
+          className="bg-green-600 w-14 md:w-28  "
           type="range"
           value={volume}
           min={0}
