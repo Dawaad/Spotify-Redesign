@@ -20,7 +20,7 @@ function Playlist() {
         <Sidebar />
         <UserPlaylist playlistID={id as string} />
       </main>
-      <div className="sticky bottom-0">
+      <div className="sticky bottom-0 z-20">
         <PlayerFooter />
       </div>
     </div>

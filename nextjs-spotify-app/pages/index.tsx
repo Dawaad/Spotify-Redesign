@@ -6,31 +6,65 @@ import PlayerFooter from "../components/SongPlayer/PlayerFooter";
 import Playlist from "../components/UserPlaylist";
 import Sidebar from "../components/Navigation/Sidebar";
 import Header from "../components/Navigation/Header";
-import { colors } from "../lib/colours";
+
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
+import TopArtist from "../components/TopArtist";
+import RecentlyPlayed from "../components/RecentlyPlayed/TopTracks";
+import PlayerMain from "../components/SongPlayer/PlayerMain";
 const Home: NextPage = () => {
+  const colours = [
+    "from-indigo-500",
+    "from-blue-500",
+    "from-green-500",
+    "from-red-500",
+    "from-yellow-500",
+    "from-pink-500",
+    "from-purple-500",
+    "from-orange-500",
+    "from-zinc-700",
+    "from-zinc-600",
+    "from-gray-900",
+  ];
+
   const [colour, setColour] = useState<string>();
 
   useEffect(() => {
-    setColour(shuffle(colors).pop());
+    setColour(shuffle(colours).pop());
   }, []);
 
   return (
-    <div className="bg-zinc-900 h-screen overflow-hidden">
+    <div className="bg-zinc-900 h-screen overflow-hidden ">
+      <section
+        className={`absolute h-80 w-full bg-gradient-to-b ${colour} to-zinc-900 `}
+      ></section>
+
       <Head>
         <title>Spotify Redesign</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex">
+      <main className="flex relative">
         <Sidebar />
-        <section
-          className={` h-80 w-full bg-gradient-to-b ${colour} to-zinc-900 `}
-        >
-          <Header />
-        </section>
+        <div className="w-full ">
+          <div>
+            <Header />
+          </div>
+          <div>
+            <TopArtist />
+          </div>
+          <div className="text-zinc-300 md:grid md:grid-cols-2">
+            <div className="hidden md:block">
+              <PlayerMain/>
+            </div>
+
+            <RecentlyPlayed />
+          </div>
+        </div>
       </main>
+      <div className="absolute w-full bottom-0 z-20 md:hidden">
+        <PlayerFooter />
+      </div>
     </div>
   );
 };

@@ -10,5 +10,5 @@ export const colors = [
   "from-zinc-900",
   "from-zinc-700",
   "from-zinc-600",
-  "from-gray-900",
+ 
 ];

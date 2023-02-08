@@ -24,7 +24,7 @@ export default function Sidebar() {
   return (
     <div
       id="sidebar-main-container"
-      className=" text-zinc-400 p-5 overflow-y-scroll scrollbar-hide text-xs lg:text-sm border-r border-zinc-600 h-screen sm: max-w-[12rem] lg:max-w-[15rem] hidden md:inline-flex pb-36"
+      className="z-[5] relative bg-zinc-900 text-zinc-400 p-5 overflow-y-scroll scrollbar-hide text-xs lg:text-sm border-r border-zinc-600 h-screen sm: max-w-[12rem] md: min-w-[10rem]  lg:min-w-[13rem] lg:max-w-[14rem] hidden md:inline-flex pb-36"
     >
       <div id="sidebar-icons" className="space-y-4">
         <Link href="/" className="flex items-center space-x-2 hover:text-white">

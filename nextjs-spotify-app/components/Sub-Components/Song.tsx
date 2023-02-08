@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import useSpotify from "../../hooks/useSpotify";
 import { convertMilliseconds } from "../../lib/time";
 import { useRecoilState } from "recoil";
 import { currentTrackIDState, isPlayingState } from "../../atoms/songAtom";
+import useSongQueue from "../../hooks/useSongQueue";
 function Song({
   order,
   track,
@@ -10,22 +11,40 @@ function Song({
   order: number;
   track: SpotifyApi.PlaylistTrackObject;
 }) {
-  const spotiftApi = useSpotify();
+  const spotifyApi = useSpotify();
   const [currentTrackId, setCurrentTrackId] =
     useRecoilState(currentTrackIDState);
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState);
+  const [currentQueue, setCurrentQueue] = useState()
+  const fetchQueueInfo = async () => {
+    const currentQueue = await fetch(
+      "https://api.spotify.com/v1/me/player/queue",
+      {
+        headers: {
+          Authorization: `Bearer ${spotifyApi.getAccessToken()}`,
+        },
+      }
+    ).then((res) => res.json());
+    console.log(currentQueue);
+    setCurrentQueue(currentQueue);
+  };
 
+  
   const playSong = () => {
     setCurrentTrackId(track.track?.id as string);
     setIsPlaying(true);
-    spotiftApi.play({
-      uris: [track.track?.uri as string],
-    });
+    fetchQueueInfo()
+     
+      
+      spotifyApi.play({
+        uris: [track.track?.uri as string],
+      });
+    
   };
   return (
     <div
       onClick={playSong}
-      className="grid grid-cols-2 text-zinc-400 py-3 px-4 hover:bg-zinc-700 rounded-lg cursor-pointer"
+      className="grid grid-cols-2 text-zinc-400 py-3 px-4 hover:bg-zinc-700 hover:bg-opacity-50 rounded-lg cursor-pointer"
     >
       <div className="flex items-center space-x-4">
         <p>{order + 1}</p>
@@ -35,7 +54,7 @@ function Song({
           alt="Song Image"
         />
         <div>
-          <p className="w-36 lg:w-72 truncate text-white">
+          <p className="w-36 lg:w-[17rem] truncate text-white">
             {track.track?.name}
           </p>
           <p className="w-40 truncate">

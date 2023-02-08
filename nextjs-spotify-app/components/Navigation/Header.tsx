@@ -14,14 +14,14 @@ function Header() {
   
  
   return (
-    <div className={` w-full max-h-[5rem] p-6 px-10 flex items-center `}>
+    <div className={` w-full max-h-[8rem] py-6 pb-10 px-10 flex items-center `}>
       <form className="w-full">
-        <div className="relative flex items-center text-zinc-600 focus-within:text-zinc-900">
+        <div className="flex items-center text-zinc-600 focus-within:text-zinc-900">
           <MagnifyingGlassIcon className="w-5 h-5 absolute ml-3 pointer-events-none" />
           <input
             type="text"
             value={search}
-            className="max-w-sm w-full rounded-lg pr-3 pl-10 py-2 font-semibold text-zinc-900 border-none ring-2 ring-zinc-600 focus:ring-zinc-900 focus:ring-2"
+            className="max-w-xs  w-full rounded-lg pr-3 pl-10 py-2 font-semibold text-zinc-900 border-none ring-2 ring-zinc-600 focus:ring-zinc-900 focus:ring-2"
             placeholder="Search"
           />
         </div>
