@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
-import useSpotify from "../hooks/useSpotify";
+import useSpotify from "../../../hooks/useSpotify";
 import {
   ChevronDownIcon,
   ChevronRightIcon,
   ChevronLeftIcon,
   ChevronDoubleDownIcon,
 } from "@heroicons/react/24/outline";
-import Artist from "./Sub-Components/Artist";
+import Artist from "./TopArtist";
 
 function TopArtist() {
   const { data: session } = useSession();

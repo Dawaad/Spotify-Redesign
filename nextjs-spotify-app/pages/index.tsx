@@ -9,10 +9,8 @@ import Header from "../components/Navigation/Header";
 
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
-import TopArtist from "../components/TopArtist";
-import RecentlyPlayed from "../components/RecentlyPlayed/TopTracks";
-import PlayerMain from "../components/SongPlayer/PlayerMain";
-import HomeMain from "../components/HomeMain";
+
+import HomeMain from "../components/Home/HomeMain";
 const Home: NextPage = () => {
   const colours = [
     "from-indigo-500",
@@ -47,7 +45,7 @@ const Home: NextPage = () => {
 
       <main className="flex relative">
         <Sidebar />
-       <HomeMain/>
+        <HomeMain />
       </main>
       <div className="absolute w-full bottom-0 z-20 md:hidden">
         <PlayerFooter />
