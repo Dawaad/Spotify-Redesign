@@ -47,9 +47,7 @@ const Home: NextPage = () => {
         <Sidebar />
         <HomeMain />
       </main>
-      <div className="absolute w-full bottom-0 z-20 md:hidden">
-        <PlayerFooter />
-      </div>
+     
     </div>
   );
 };

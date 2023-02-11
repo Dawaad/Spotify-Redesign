@@ -72,8 +72,8 @@ function TopArtist() {
  
 
   return (
-    <div className="pt-10 px-4 md:px-6  text-zinc-200">
-      <div className="px-8 md:px-8 space-x-10 flex font-bold text-xl items-center">
+    <div className="pt-10 px-4   text-zinc-200">
+      <div className="px-8  space-x-10 flex font-bold text-xl items-center">
         <span>Your Top Artists</span>
         <div className="group">
           <div className="flex items-center text-xs md:text-sm font-semibold cursor-pointer py-3">
