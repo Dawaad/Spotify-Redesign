@@ -29,7 +29,7 @@ function TopTrack({
       });
   };
 
-  useEffect(() => {}, [session, spotifyApi]);
+  
   return (
     <div
       onClick={playSong}

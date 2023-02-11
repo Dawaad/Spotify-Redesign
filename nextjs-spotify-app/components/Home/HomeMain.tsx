@@ -3,6 +3,8 @@ import Header from "../Navigation/Header";
 import TopArtist from "./TopArtists/TopArtists";
 import PlayerMain from "../SongPlayer/PlayerMain";
 import TopTracks from "./TopTracks/TopTracks";
+import { useSession } from "next-auth/react";
+import YourPlaylist from "./Playlist/YourPlaylist";
 function HomeMain() {
   return (
     <div className="h-screen overflow-x-hidden overflow-y-scroll scrollbar-hide">
@@ -18,6 +20,9 @@ function HomeMain() {
         </div>
 
         <TopTracks />
+      </div>
+      <div>
+        <YourPlaylist />
       </div>
     </div>
   );
