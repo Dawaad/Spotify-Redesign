@@ -76,7 +76,7 @@ function TopTracks() {
           </div>
         </div>
       </div>
-      <div className="rounded-lg  z-0 h-[17rem]  md:h-[21rem] overflow-y-scroll scrollbar-hide space-y-3 shadow-2xl bg-zinc-700 bg-opacity-[.48] shadow-zinc-600 ">
+      <div className="rounded-lg  z-0 h-[17rem]  md:min-w-[15rem] md:h-[21rem] overflow-y-scroll scrollbar-hide space-y-3">
         {topTrack
           ?.slice(0, trackLimit)
           .map((track: SpotifyApi.TrackObjectFull, index: number) => {

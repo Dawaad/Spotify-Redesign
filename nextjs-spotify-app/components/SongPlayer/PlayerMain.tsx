@@ -167,7 +167,7 @@ function PlayerMain() {
         Now Playing
       </div>
       <div className="flex">
-        <div className="w-[22rem] lg:w-full p-4 border rounded-xl bg-zinc-300 text-zinc-800 h-[21rem] shadow-2xl shadow-zinc-600">
+        <div className="md:min-w-[18rem] w-full p-4  rounded-xl bg-zinc-800 bg-opacity-80 text-zinc-300 text-opacity-85 h-[21rem]   ">
           <div className="grid grid-cols-8"> 
             <div className="flex justify-start col-span-1">
               {" "}
@@ -180,19 +180,19 @@ function PlayerMain() {
               </p>
             </div>
           </div>
-          <div className="flex justify-center md:p-8 lg:p-4">
+          <div className="flex justify-center md:p-8 lg:p-2">
             <img
-              className="h-[7rem] w-[7rem] lg:h-36 lg:w-36 rounded-2xl shadow-xl shadow-zinc-800"
+              className="h-[7rem] w-[7rem] lg:h-[10rem] lg:w-[10rem] rounded-2xl shadow-xl shadow-zinc-900"
               src={`${currentSongInfo?.album?.images?.[0]?.url}`}
             />
           </div>
           <div className="flex justify-center font-semibold text-sm truncate">
             {currentSongInfo?.name}
           </div>
-          <div className="flex justify-center text-zinc-600 text-sm">
+          <div className="flex justify-center text-zinc-400 text-opacity-80 text-sm">
             {currentSongInfo?.artists[0].name}
           </div>
-          <div className="flex justify-evenly space-x-1 p-6 items-center">
+          <div className="pt-2 flex justify-evenly space-x-1  items-center">
             <ArrowsRightLeftIcon
               className={`${
                 isShuffle ? "text-green-700" : ""

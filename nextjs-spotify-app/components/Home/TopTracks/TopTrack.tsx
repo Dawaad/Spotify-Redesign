@@ -33,24 +33,24 @@ function TopTrack({
   return (
     <div
       onClick={playSong}
-      className="h-[3.55rem] rounded-lg grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 bg-zinc-300  text-zinc-800 shadow-md shadow-zinc-500 hover:bg-opacity-[0.85]"
+      className="h-[3.55rem] md:h-[3rem] lg:h-[3.25rem] w-full bg-opacity-80 rounded-lg grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 bg-zinc-800 text-zinc-300 text-opacity-85 cursor-pointer hover:bg-neutral-700 hover:bg-opacity-80 transition-all duration-300 "
     >
-      <div className="col-span-2 flex items-center space-x-6 md:space-x-3 lg:space-x-6 ml-4 ">
-        <div className="font-semibold">{index + 1}</div>
+      <div className="col-span-2 flex items-center space-x-6 md:space-x-3 lg:space-x-4 xl:space-x-7 ml-4 ">
+        <div className="font-semibold text-xs xl:text-sm">{index + 1}</div>
         <img
-          className="h-10 w-10 lg:h-10 lg:w-10 rounded-lg md:h-8 md:w-8"
+          className="h-10 w-10 lg:h-9 lg:w-9 xl:w-10 xl:h-10 rounded-full md:h-8 md:w-8 "
           src={`${track.album.images[0]?.url}`}
         />
-        <div className="w-64 truncate font-bold text-zinc-800 text-sm ">
+        <div className="w-64 truncate font-bold text-sm md:text-xs lg:text-sm ">
           {track.name}
         </div>
       </div>
       <div className="flex md:hidden lg:flex items-center">
-        <div className=" px-6 w-32 truncate  font-semibold text-zinc-700  items-center text-sm">
+        <div className=" px-6 w-32 truncate  font-semibold text-zinc-400 text-opacity-75  items-center text-xs xl:text-sm">
           {track.artists[0].name}
         </div>
       </div>
-      <div className="font-semibold flex md:hidden lg:flex items-center text-sm ">
+      <div className="font-semibold flex md:hidden lg:flex items-center text-xs xl:text-sm">
         {convertMilliseconds(track.duration_ms)}
       </div>
     </div>

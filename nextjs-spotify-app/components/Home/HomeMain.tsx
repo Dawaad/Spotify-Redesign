@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import YourPlaylist from "./Playlist/YourPlaylist";
 function HomeMain() {
   return (
-    <div className="h-[105vh] overflow-x-hidden overflow-y-scroll scrollbar-hide">
+    <div className="h-[100vh] overflow-x-hidden overflow-y-scroll scrollbar-hide">
       <div className="relative">
         <Header />
       </div>
@@ -22,15 +22,13 @@ function HomeMain() {
 
         <TopTracks />
       </div>
-      <div>
+      <div className="block md:hidden">
         <YourPlaylist />
       </div>
-      <div className="absolute w-full bottom-0 z-20 md:hidden">
-        <PlayerFooter />
-      </div>
-      <div className="h-[5rem]">
+      <div className="h-[5rem] md:h-[0rem]">
 
       </div>
+     
     </div>
   );
 }

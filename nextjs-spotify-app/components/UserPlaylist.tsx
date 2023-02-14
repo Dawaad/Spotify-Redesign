@@ -70,7 +70,7 @@ function UserPlaylist({ playlistID }: { playlistID: string }) {
         <div className=" bg-zinc-900 bg-opacity-[0.15] relative py-6">
           <div className="px-8 grid grid-cols-2">
             <div className="flex items-center">
-              <PlayCircleIcon className="w-[4.5rem] h-[4.5rem] text-green-500" />
+              <PlayCircleIcon className="button w-[4.5rem] h-[4.5rem] text-green-500" />
             </div>
             <div className="flex justify-end items-center space-x-3 text-zinc-400">
               

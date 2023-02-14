@@ -32,7 +32,7 @@ export default function Sidebar() {
           <div>Home</div>
         </Link>
 
-        <Link href="/" className="flex items-center space-x-2 hover:text-white">
+        <Link href="/search/" className="flex items-center space-x-2 hover:text-white">
           <HeroIcons.MagnifyingGlassIcon className="h-5 w-5" />
           <div>Search</div>
         </Link>
