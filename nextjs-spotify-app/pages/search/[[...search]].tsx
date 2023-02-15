@@ -11,6 +11,8 @@ import Header from "../../components/Navigation/Header";
 import Sidebar from "../../components/Navigation/Sidebar";
 import PlayerFooter from "../../components/SongPlayer/PlayerFooter";
 import SearchArtist from "../../components/Search/SearchArtist";
+import TopTrack from "../../components/Home/TopTracks/TopTrack";
+import SearchAlbum from "../../components/Search/SearchAlbum";
 function Search() {
   const router = useRouter();
   const { search } = router.query;
@@ -75,26 +77,66 @@ function Search() {
             </div>
             <div>
               {search ? (
-                <div className="py-6 px-12 text-zinc-200  text-lg lg:text-xl font-bold">
-                  <p className="">Search Results for "{search}"</p>
-                  <div className="mt-8 ">
-                    <div className="pb-3">Artists</div>
-                    <div className="p-6 bg-zinc-900 bg-opacity-[0.45] rounded-lg  flex space-x-3 justify-evenly" >
-                      {searchResults?.artistResult?.items.map((artist:SpotifyApi.ArtistObjectFull, index:number) => {
-                        return <SearchArtist artist={artist} index={index} />
-                      })}
+                <>
+                  <div className="py-6 px-12 text-zinc-200  text-lg lg:text-xl font-bold">
+                    <p className="">Search Results for "{search}"</p>
+                    <div className="mt-8 ">
+                      <div className="pb-3">Artists</div>
+                      <div className="p-6 bg-zinc-800 bg-opacity-[0.25] rounded-lg  flex space-x-6 justify-evenly ">
+                        {searchResults?.artistResult?.items.map(
+                          (
+                            artist: SpotifyApi.ArtistObjectFull,
+                            index: number
+                          ) => {
+                            return (
+                              <SearchArtist artist={artist} index={index} />
+                            );
+                          }
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <div className="lg:grid lg:grid-cols-2 text-zinc-200 px-12 py-3 text-lg lg:text-xl font-bold">
+                    <div>
+                      <div>Albums</div>
+                      <div className="grid grid-rows-2 grid-cols-2 p-3 mt-3 bg-zinc-800 bg-opacity-[0.25] rounded-lg">
+                        {searchResults?.albumResult?.items
+                          .slice(0, 4)
+                          .map((album: SpotifyApi.AlbumObjectSimplified) => {
+                            return (
+                              <div className="p-3 ">
+                                <SearchAlbum album={album} />
+                              </div>
+                            );
+                          })}
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <div className="">Songs</div>
+                      <div className="p-3 bg-zinc-800 bg-opacity-[0.25] mt-3 rounded-lg space-y-4 h-auto">
+                        {searchResults?.trackResult?.items.map(
+                          (
+                            track: SpotifyApi.TrackObjectFull,
+                            index: number
+                          ) => {
+                            return <TopTrack track={track} index={index} />;
+                          }
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <p>No Search Lol</p>
               )}
             </div>
-          </div>
-          <div className="absolute w-full bottom-0 z-20 ">
-            <PlayerFooter />
+
+            <div className="h-[7rem]"></div>
           </div>
         </main>
+        <div className="absolute w-full bottom-0 z-20 ">
+          <PlayerFooter />
+        </div>
       </div>
     </>
   );
