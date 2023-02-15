@@ -19,7 +19,7 @@ import {
   ArrowUturnLeftIcon,
   SpeakerWaveIcon,
   SpeakerXMarkIcon,
-  ArrowPathIcon
+  ArrowPathIcon,
 } from "@heroicons/react/24/solid";
 
 function PlayerFooter() {
@@ -115,8 +115,8 @@ function PlayerFooter() {
         setIsPlaying(data.body?.is_playing);
       });
     });
-    fetchPlayBackState()
-  }
+    fetchPlayBackState();
+  };
 
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
@@ -139,88 +139,115 @@ function PlayerFooter() {
   }, [currentTrackId, spotifyApi, session]);
 
   return (
-    <div className="h-24 bg-gradient-to-b from-zinc-900 to-stone-900 border-t border-zinc-600 text-zinc-400 grid grid-cols-3 text-xs md:text-base px-2 md:px-8">
-      <div className="flex items-center space-x-4">
-        <img
-          className="hidden md:inline h-10 w-10 lg:h-16 lg:w-16"
-          src={currentSongInfo?.album.images?.[0]?.url}
-          alt=""
-        />
-        <div className="flex-shrink-0">
-          <h3 className="font-bold ">{currentSongInfo?.name}</h3>
-          <p>
-            {currentSongInfo?.artists
-              .map((artist: SpotifyApi.ArtistObjectSimplified) => {
-                return artist.name;
-              })
-              .join(", ")}
-          </p>
-        </div>
-        <div>
-        
-        </div>
-      </div>
-      <div className="flex items-center justify-evenly space-x-4 bg-gradient-to-b from-zinc-900 to-stone-900 shadow-lg shadow-zinc-900">
-      <ArrowsRightLeftIcon
+    <>
+      {currentSongInfo ? (
+        <div className="h-24 bg-gradient-to-b from-zinc-900 to-stone-900 border-t border-zinc-600 text-zinc-400 grid grid-cols-3 text-xs md:text-base px-2 md:px-8">
+          <div className="flex items-center space-x-4">
+            <img
+              className="hidden md:inline h-10 w-10 lg:h-16 lg:w-16"
+              src={currentSongInfo?.album.images?.[0]?.url}
+              alt=""
+            />
+            <div className="flex-shrink-0">
+              <h3 className="font-bold ">{currentSongInfo?.name}</h3>
+              <p>
+                {currentSongInfo?.artists
+                  .map((artist: SpotifyApi.ArtistObjectSimplified) => {
+                    return artist.name;
+                  })
+                  .join(", ")}
+              </p>
+            </div>
+            <div></div>
+          </div>
+          <div className="flex items-center justify-evenly space-x-4 bg-gradient-to-b from-zinc-900 to-stone-900 shadow-lg shadow-zinc-900">
+            <ArrowsRightLeftIcon
               className={`${isShuffle ? "text-green-700" : ""} button `}
               onClick={handleShuffle}
             />
-        <BackwardIcon
-          className="button"
-          onClick={() => {
-            handleBackwardSkip();
-          }}
-        />
-        {isPlaying ? (
-          <PauseCircleIcon
-            onClick={() => {
-              handlePlayPause();
-            }}
-            className="button w-10 h-10"
-          />
-        ) : (
-          <PlayCircleIcon
-            onClick={() => {
-              handlePlayPause();
-            }}
-            className="button w-10 h-10"
-          />
-        )}
-        <ForwardIcon
-          className="button"
-          onClick={() => {
-            handleForwardSkip();
-          }}
-        />
-        <ArrowUturnLeftIcon
-            onClick={handleRepeat}
-              className={`${isRepeat === 'context' ? "text-green-700" : isRepeat === 'track'? "text-yellow-700" :''}  button `}
+            <BackwardIcon
+              className="button"
+              onClick={() => {
+                handleBackwardSkip();
+              }}
             />
-            
-      </div>
+            {isPlaying ? (
+              <PauseCircleIcon
+                onClick={() => {
+                  handlePlayPause();
+                }}
+                className="button w-10 h-10"
+              />
+            ) : (
+              <PlayCircleIcon
+                onClick={() => {
+                  handlePlayPause();
+                }}
+                className="button w-10 h-10"
+              />
+            )}
+            <ForwardIcon
+              className="button"
+              onClick={() => {
+                handleForwardSkip();
+              }}
+            />
+            <ArrowUturnLeftIcon
+              onClick={handleRepeat}
+              className={`${
+                isRepeat === "context"
+                  ? "text-green-700"
+                  : isRepeat === "track"
+                  ? "text-yellow-700"
+                  : ""
+              }  button `}
+            />
+          </div>
 
-      <div className="flex items-center space-x-2 md:space-x-4 justify-end pr-5">
-      <ArrowPathIcon className="button lg:w-6 lg:h-6 hover:rotate-180 duration-200" onClick={handleRefresh}/>
-        <SpeakerXMarkIcon
-          className="button"
-          onClick={() => volume > 0 && setVolume(volume - 10)}
-        />
-        <input
-          onChange={(e) => {
-            setVolume(Number(e.target.value));
-          }}
-          className="accent-zinc-300 hover:accent-green-600 active:accent-green-400  w-14 md:w-28  "
-          type="range"
-          value={volume}
-          min={0}
-          max={100}
-        />
-        <SpeakerWaveIcon
-          className="button"
-          onClick={() => volume < 100 && setVolume(volume + 10)}
-        />
-      </div>
-    </div>
+          <div className="flex items-center space-x-2 md:space-x-4 justify-end pr-5">
+            <ArrowPathIcon
+              className="button lg:w-6 lg:h-6 hover:rotate-180 duration-200"
+              onClick={handleRefresh}
+            />
+            <SpeakerXMarkIcon
+              className="button"
+              onClick={() => volume > 0 && setVolume(volume - 10)}
+            />
+            <input
+              onChange={(e) => {
+                setVolume(Number(e.target.value));
+              }}
+              className="accent-zinc-300 hover:accent-green-600 active:accent-green-400  w-14 md:w-28  "
+              type="range"
+              value={volume}
+              min={0}
+              max={100}
+            />
+            <SpeakerWaveIcon
+              className="button"
+              onClick={() => volume < 100 && setVolume(volume + 10)}
+            />
+          </div>
+        </div>
+      ) : (
+        <div className="h-24 bg-gradient-to-b from-zinc-900 to-stone-900 border-t border-zinc-600 text-zinc-400 grid grid-cols-4 text-sm px-2 md:px-8">
+      
+          <div className=" flex items-center justify-center  font-semibold col-span-3">
+            Please ensure that your Spotify app is active and is currently
+            playing a song. Once a song is playing, refresh the page to retrieve
+            current playback information
+          </div>
+          <div className="flex items-center justify-center">
+
+          <ArrowPathIcon
+            className="button w-8 h-8 hover:rotate-180 duration-200"
+            onClick={handleRefresh}
+            />
+            </div>
+      
+        </div>
+      )}
+    </>
   );
 }
 

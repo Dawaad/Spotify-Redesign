@@ -25,10 +25,10 @@ function YourPlaylist() {
       <div className="flex items-center text-xl font-bold text-zinc-300">Your Playlists</div>
 
 
-      <Link href={"/collections/playlists"} className="flex items-center justify-end text-xs font-semibold text-zinc-400 text-opacity-80 hover:underline cursor-pointer">SHOW ALL</Link>
+      <Link href={"/collections/playlists"} className="h-auto flex items-center justify-end text-xs font-semibold text-zinc-400 text-opacity-80 hover:underline cursor-pointer">SHOW ALL</Link>
  
       </div>
-      <div className="flex  overflow-hidden justify-between py-4 space-x-6">
+      <div className="flex  overflow-hidden justify-between py-4 space-x-6 h-auto">
         {allPlaylist
           ?.sort(
             (

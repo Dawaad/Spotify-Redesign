@@ -10,6 +10,7 @@ import Head from "next/head";
 import Header from "../../components/Navigation/Header";
 import Sidebar from "../../components/Navigation/Sidebar";
 import PlayerFooter from "../../components/SongPlayer/PlayerFooter";
+import SearchArtist from "../../components/Search/SearchArtist";
 function Search() {
   const router = useRouter();
   const { search } = router.query;
@@ -56,25 +57,46 @@ function Search() {
   }, [search, spotifyApi]);
 
   return (
-    <div className="bg-zinc-900 h-screen overflow-hidden">
-      <section
-        className={`absolute h-80 w-full bg-gradient-to-b ${colour} to-zinc-900 `}
-      ></section>
+    <>
+      <Head>
+        <title>Spotify</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="bg-zinc-900 h-screen overflow-hidden">
+        <section
+          className={`absolute h-80 w-full bg-gradient-to-b ${colour} to-zinc-900 `}
+        ></section>
 
-      <main className="flex relative">
-        <Sidebar />
-        <div className="h-[100vh] overflow-x-hidden overflow-y-scroll scrollbar-hide w-full">
-          <div className="relative">
-            <Header />
+        <main className="flex relative">
+          <Sidebar />
+          <div className="h-[100vh] overflow-x-hidden overflow-y-scroll scrollbar-hide w-full">
+            <div className="relative">
+              <Header />
+            </div>
+            <div>
+              {search ? (
+                <div className="py-6 px-12 text-zinc-200  text-lg lg:text-xl font-bold">
+                  <p className="">Search Results for "{search}"</p>
+                  <div className="mt-8 ">
+                    <div className="pb-3">Artists</div>
+                    <div className="p-6 bg-zinc-900 bg-opacity-[0.45] rounded-lg  flex space-x-3 justify-evenly" >
+                      {searchResults?.artistResult?.items.map((artist:SpotifyApi.ArtistObjectFull, index:number) => {
+                        return <SearchArtist artist={artist} index={index} />
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <p>No Search Lol</p>
+              )}
+            </div>
           </div>
-          <div>{!search ? <p>No Search Lol</p> : <p>Ok</p>}</div>
-          
-        </div>
-        <div className="absolute w-full bottom-0 z-20 ">
-        <PlayerFooter />
+          <div className="absolute w-full bottom-0 z-20 ">
+            <PlayerFooter />
+          </div>
+        </main>
       </div>
-      </main>
-    </div>
+    </>
   );
 }
 

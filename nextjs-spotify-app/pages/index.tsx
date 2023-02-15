@@ -39,7 +39,7 @@ const Home: NextPage = () => {
       ></section>
 
       <Head>
-        <title>Spotify Redesign</title>
+        <title>Spotify</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
