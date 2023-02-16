@@ -8,7 +8,7 @@ function SearchAlbum({ album }: { album: SpotifyApi.AlbumObjectSimplified }) {
     >
       <div className="grid grid-cols-3">
         <div className="flex justify-center">
-          <img className="rounded-lg w-full " src={album.images?.[0]?.url} />
+          <img className="rounded-lg w-full " src={album.images?.[2]?.url} />
         </div>
         
         <div className="col-span-2 px-3 flex items-center">
