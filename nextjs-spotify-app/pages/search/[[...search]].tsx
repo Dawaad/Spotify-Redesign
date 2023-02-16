@@ -46,7 +46,7 @@ function Search() {
     if (spotifyApi.getAccessToken()) {
       spotifyApi
         .search(search as string, ["playlist", "track", "artist", "album"], {
-          limit: 5,
+          limit: 6,
         })
         .then((res) => {
           setSearchResult({
@@ -84,7 +84,7 @@ function Search() {
                     <div className="mt-8 ">
                       <div className="pb-3">Artists</div>
                       <div className="p-6 bg-zinc-800 bg-opacity-[0.25] rounded-lg  flex space-x-6 justify-evenly ">
-                        {searchResults?.artistResult?.items.map(
+                        {searchResults?.artistResult?.items.slice(0,5).map(
                           (
                             artist: SpotifyApi.ArtistObjectFull,
                             index: number
@@ -102,7 +102,7 @@ function Search() {
                       <div>Albums</div>
                       <div className="grid grid-rows-2 grid-cols-2 p-3 mt-3 bg-zinc-800 bg-opacity-[0.25] rounded-lg">
                         {searchResults?.albumResult?.items
-                          .slice(0, 4)
+                          .slice(0, 6)
                           .map((album: SpotifyApi.AlbumObjectSimplified) => {
                             return (
                               <div className="p-3 ">
@@ -115,7 +115,7 @@ function Search() {
                     <div className="">
                       <div className="">Songs</div>
                       <div className="p-3 bg-zinc-800 bg-opacity-[0.25] mt-3 rounded-lg space-y-4 h-auto">
-                        {searchResults?.trackResult?.items.map(
+                        {searchResults?.trackResult?.items.slice(0,5).map(
                           (
                             track: SpotifyApi.TrackObjectFull,
                             index: number

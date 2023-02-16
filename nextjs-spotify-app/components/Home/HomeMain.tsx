@@ -25,7 +25,7 @@ function HomeMain() {
       <div className="block md:hidden">
         <YourPlaylist />
       </div>
-      <div className="h-[5rem] md:h-[0rem]">
+      <div className="h-[4rem]">
 
       </div>
      

@@ -26,10 +26,10 @@ function SearchArtist({
             } `}
           />
         </div>
-        <div className=" truncate  text-zinc-200  py-2 w-9/12 text-sm font-bold m-auto">
+        <div className=" truncate-2-lines text-zinc-200   w-9/12 text-sm font-bold m-auto">
           {artist.name}
         </div>
-        <div className="truncate-2-lines  text-zinc-400 text-opacity-80 text-sm w-9/12 m-auto">
+        <div className="truncate-1-lines mt-2 text-zinc-400 text-opacity-80 text-sm w-9/12 m-auto">
           Artist
         </div>
       </div>
