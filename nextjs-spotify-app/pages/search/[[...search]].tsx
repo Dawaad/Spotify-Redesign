@@ -13,6 +13,7 @@ import PlayerFooter from "../../components/SongPlayer/PlayerFooter";
 import SearchArtist from "../../components/Search/SearchArtist";
 import TopTrack from "../../components/Home/TopTracks/TopTrack";
 import SearchAlbum from "../../components/Search/SearchAlbum";
+import SearchPlaylist from "../../components/Search/SearchPlaylist";
 function Search() {
   const router = useRouter();
   const { search } = router.query;
@@ -96,7 +97,7 @@ function Search() {
                       </div>
                     </div>
                   </div>
-                  <div className="lg:grid lg:grid-cols-2 text-zinc-200 px-12 py-3 text-lg lg:text-xl font-bold">
+                  <div className="lg:grid lg:grid-cols-2 text-zinc-200 px-12 py-3 text-lg lg:text-xl font-bold space-y-3 lg:space-y-0 lg:space-x-3">
                     <div>
                       <div>Albums</div>
                       <div className="grid grid-rows-2 grid-cols-2 p-3 mt-3 bg-zinc-800 bg-opacity-[0.25] rounded-lg">
@@ -111,7 +112,7 @@ function Search() {
                           })}
                       </div>
                     </div>
-                    <div className="ml-4">
+                    <div className="">
                       <div className="">Songs</div>
                       <div className="p-3 bg-zinc-800 bg-opacity-[0.25] mt-3 rounded-lg space-y-4 h-auto">
                         {searchResults?.trackResult?.items.map(
@@ -125,9 +126,28 @@ function Search() {
                       </div>
                     </div>
                   </div>
+                  <div className="py-6 px-12 text-zinc-200  text-lg lg:text-xl font-bold">
+                    <div className="pb-3">Playlist</div>
+                    <div className="grid grid-rows-2 grid-cols-3  p-3 mt-3 bg-zinc-800 bg-opacity-[0.25] rounded-lg">
+                      {searchResults?.playlistResult?.items.map(
+                        (
+                          playlist: SpotifyApi.PlaylistObjectSimplified,
+                          index: number
+                        ) => {
+                          return (
+                            <div className="p-3 ">
+                            <SearchPlaylist playlist={playlist} index={index} />
+                            </div>
+                          );
+                        }
+                      )}
+                    </div>
+                  </div>
                 </>
               ) : (
-                <p>No Search Lol</p>
+                <div className="py-6 px-12 text-zinc-200  text-lg lg:text-xl font-bold flex justify-center items-center h-[20rem]">
+                    The search field is empty. Please provide a search term to proceed
+                  </div>
               )}
             </div>
 

@@ -36,6 +36,8 @@ function UserPlaylist({ playlistID }: { playlistID: string }) {
     setColor(shuffle(colors).pop() as string);
   }, [playlistID]);
 
+  
+
   return (
     <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide relative ">
       <ProfileTag />
@@ -56,12 +58,9 @@ function UserPlaylist({ playlistID }: { playlistID: string }) {
           </h1>
           <p className="mt-6 text-zinc-300">{playlist?.description}</p>
           <div className="flex mt-2 space-x-2">
-            <img
-              className="h-6 w-6 rounded-full"
-              src={session?.user?.image as string}
-            />
-
-            <p>{session?.user?.name},</p>
+            
+           
+            <p>{playlist?.owner.display_name},</p>
             <p className="text-zinc-300 ">{playlist?.tracks.total} songs</p>
           </div>
         </div>
