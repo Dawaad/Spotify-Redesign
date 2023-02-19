@@ -5,12 +5,14 @@ import { customOrder } from "../interfaces/customOrder";
 import Song from "./Sub-Components/Song";
 function Songs({
   playlist,
-  customOrder,
-  search
+ 
+  search,
+ 
 }: {
   playlist: SpotifyApi.SinglePlaylistResponse | undefined;
   customOrder: customOrder
   search: string|null
+
 }) {
 
   

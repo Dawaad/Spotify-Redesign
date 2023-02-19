@@ -26,7 +26,7 @@ function Header() {
                   : setSearch(null);
                 console.log(search);
               }}
-              className="max-w-[18rem] md:max-w-xs placeholder-zinc-300 w-full rounded-lg pr-3 pl-10 py-2 font-semibold bg-zinc-800 bg-opacity-[0.25] text-zinc-200 border-none focus:outline-none transition-all duration-500 outline-zinc-200"
+              className="max-w-[17rem] md:max-w-xs placeholder-zinc-300 w-full rounded-lg pr-3 pl-10 py-2 font-semibold bg-zinc-800 bg-opacity-[0.25] text-zinc-200 border-none focus:outline-none transition-all duration-500 outline-zinc-200"
               placeholder="Search"
             />
           </div>

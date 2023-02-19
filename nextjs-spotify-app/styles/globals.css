@@ -8,6 +8,8 @@
   }
 }
 
+
+
 .truncate-2-lines {
   overflow: hidden;
   display: -webkit-box;
@@ -25,16 +27,17 @@
 
 #mouseTracker {
   background-color: white;
-  height: 10vmax;
+  height: 13vmax;
   aspect-ratio: 1;
   position: absolute;
   left: 50%;
   top: 50%;
   translate: -50% -50%;
   border-radius: 50%;
-  background: linear-gradient(to right, aquamarine, mediumpurple);
-  animation: rotate 20s infinite;
+  background: linear-gradient(to left, rgb(197, 200, 219), rgb(5, 179, 28));
+  animation: rotate 10s infinite;
   opacity: 0.8;
+  overflow: hidden;
   
 }
 
@@ -43,7 +46,7 @@
   width: 100%;
   position: absolute;
   z-index: 2;
-  backdrop-filter: blur(2vmax);
+  backdrop-filter: blur(4vmax);
   
 }
 
@@ -55,9 +58,31 @@
   }
 
   50% {
-    scale: 1 1.2;
+    scale: 1 1.5;
   }
   to {
     rotate: 360deg;
   }
+}
+
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to the rows */
+.hiddenRow {
+  animation: slide-in 0.5s ease-out;
+}
+
+/* Add a transition to smooth out the animation */
+.halfGrid {
+  transition: height 0.5s ease-in-out;
 }

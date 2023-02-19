@@ -11,12 +11,12 @@ function SearchPlaylist({
   return (
     <Link
       href={`/playlist/${playlist.id}`}
-      className="flex  h-max rounded-md bg-zinc-800 bg-opacity-80 py-3 px-3 hover:bg-neutral-700 hover:bg-opacity-60 transition-all duration-200"
+      className="flex rounded-md  bg-zinc-800 bg-opacity-80 py-3 px-3 hover:bg-neutral-700 hover:bg-opacity-60 transition-all duration-200"
     >
       <div className="grid grid-cols-3">
-        <div className="flex justify-center my-auto flex-wrap h-min">
+        <div className="flex justify-center flex-wrap h-min">
           <img
-            className="rounded-lg h-full w-auto "
+            className="rounded-lg h-full w-auto aspect-square"
             src={playlist.images?.[0]?.url}
           />
         </div>

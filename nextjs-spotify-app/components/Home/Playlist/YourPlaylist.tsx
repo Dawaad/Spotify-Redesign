@@ -40,7 +40,14 @@ function YourPlaylist() {
           )
           .slice(0, 3)
           .map((v: SpotifyApi.PlaylistObjectSimplified, index: number) => {
-            return <Playlist playlist={v} index={index} key={index}/>;
+            return (
+              <div className={`group pb-1 w-1/2 sm:1/3   justify-center  rounded-md bg-zinc-800 bg-opacity-80 hover:bg-neutral-700 hover:bg-opacity-60 transition-all duration-200 ${
+                index == 2 ? "hidden sm:flex" : "flex"
+              }`}>
+
+            <Playlist playlist={v} index={index} key={index}/>
+              </div>
+            )
           })}
       </div>
     </div>

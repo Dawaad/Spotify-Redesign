@@ -17,6 +17,7 @@ function UserPlaylist({ playlistID }: { playlistID: string }) {
   const { data: session } = useSession();
   const [playlist, setPlaylist] = useState<SpotifyApi.SinglePlaylistResponse>();
   const [search, setSearch] = useState<string | null>(null);
+  const [devices,setDevices] = useState<SpotifyApi.UserDevice[]>()
   const [customOrder, setCustomOrder] = useState<customOrder>({
     order: null,
     direction: "Ascending",
@@ -30,6 +31,10 @@ function UserPlaylist({ playlistID }: { playlistID: string }) {
         setPlaylist(data.body);
       })
       .catch((err) => {});
+
+      spotifyApi.getMyDevices().then(res => {
+        setDevices(res.body.devices)
+      })
   }, [spotifyApi, playlistID]);
 
   useEffect(() => {
@@ -104,7 +109,7 @@ function UserPlaylist({ playlistID }: { playlistID: string }) {
               <ClockIcon className="w-6 h-6" />
             </div>
           </div>
-          <Songs playlist={playlist} customOrder={customOrder} search={search} />
+          <Songs playlist={playlist} customOrder={customOrder} search={search}/>
         </div>
       </section>
     </div>
