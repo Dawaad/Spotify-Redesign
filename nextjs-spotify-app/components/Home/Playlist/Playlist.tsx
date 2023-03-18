@@ -11,7 +11,7 @@ function Playlist({
   return (
     <Link
       
-      href={`playlist/${playlist.id}`}
+      href={`/playlist/${playlist.id}`}
     >
       <div className="py-6">
         <div className="pb-2">
